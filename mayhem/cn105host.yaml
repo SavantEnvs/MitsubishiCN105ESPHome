@@ -1,0 +1,43 @@
+# ESPHome host-platform config used by mayhem/build.sh to generate the ESPHome core + cn105 build tree
+# (esphome compile --only-generate) that the fuzz harnesses link against. Mirrors a full-featured
+# cn105 install; the harness (mayhem/harnesses/cn105_fuzz.cpp) re-creates the same component setup.
+esphome:
+  name: cn105host
+host:
+logger:
+  level: NONE
+external_components:
+  - source: {type: local, path: ../components}
+uart:
+  id: HP_UART
+  port: /dev/null
+  baud_rate: 2400
+climate:
+  - platform: cn105
+    name: hp
+    id: hp
+    update_interval: 2s
+    connection_bootstrap_delay: 0s
+    compressor_frequency_sensor: {name: cf}
+    input_power_sensor: {name: ip}
+    kwh_sensor: {name: kwh}
+    runtime_hours_sensor: {name: rh}
+    outside_air_temperature_sensor: {name: oat}
+    target_humidity_sensor: {name: th}
+    vertical_vane_select: {name: vv}
+    horizontal_vane_select: {name: hv}
+    isee_sensor: {name: isee}
+    auto_sub_mode_sensor: {name: asm}
+    sub_mode_sensor: {name: sm}
+    stage_sensor: {name: st}
+    error_code_sensor: {name: ec}
+    functions_sensor: {name: fs}
+    functions_get_button: {name: fg}
+    functions_set_button: {name: fsb}
+    functions_set_code: {name: fsc}
+    functions_set_value: {name: fsv}
+    hp_uptime_connection_sensor: {name: up}
+    airflow_control_select: {name: afc}
+    air_purifier_switch: {name: aps}
+    night_mode_switch: {name: nms}
+    circulator_switch: {name: cs}

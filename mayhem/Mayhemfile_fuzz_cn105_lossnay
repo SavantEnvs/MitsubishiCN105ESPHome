@@ -1,0 +1,9 @@
+project: savantenvs/MitsubishiCN105ESPHome
+target: fuzz-cn105-lossnay
+testsuite:
+  - https://$MAYHEM_DOMAIN/$MAYHEM_PROJECT/$MAYHEM_TARGET/testsuite.tar
+  - file://mayhem/fuzz-cn105-lossnay/testsuite
+cmds:
+  - cmd: /mayhem/fuzz_cn105_lossnay
+    libfuzzer: true
+    timeout: 5

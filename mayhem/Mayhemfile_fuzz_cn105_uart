@@ -1,0 +1,9 @@
+project: savantenvs/MitsubishiCN105ESPHome
+target: fuzz-cn105-uart
+testsuite:
+  - https://$MAYHEM_DOMAIN/$MAYHEM_PROJECT/$MAYHEM_TARGET/testsuite.tar
+  - file://mayhem/fuzz-cn105-uart/testsuite
+cmds:
+  - cmd: /mayhem/fuzz_cn105_uart
+    libfuzzer: true
+    timeout: 5
